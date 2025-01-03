@@ -95,3 +95,8 @@ systemctl start backend.service &>>$LOGFILE
 
 VALIDATE $? "Starting backend.service..."
 
+dnf install mysql -y &>>$LOGFILE
+
+VALIDATE $? "Installing mysql..."
+
+mysql -h 172.31.87.139 -uroot -pExpenseApp@1 < /app/schema/backend.sql 
