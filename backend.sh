@@ -87,16 +87,20 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "Reloading systemd..."
 
-systemctl enable backend.service &>>$LOGFILE
+systemctl enable backend &>>$LOGFILE
 
-VALIDATE $? "Enabling backend.service..."
+VALIDATE $? "Enabling backend..."
 
-systemctl start backend.service &>>$LOGFILE
+systemctl start backend &>>$LOGFILE
 
-VALIDATE $? "Starting backend.service..."
+VALIDATE $? "Starting backend..."
 
 dnf install mysql -y &>>$LOGFILE
 
 VALIDATE $? "Installing mysql..."
 
 mysql -h 172.31.87.139 -uroot -pExpenseApp@1 < /app/schema/backend.sql 
+
+mysql -h 172.31.87.139 -uroot -pExpenseApp@1
+
+systemctl restart backend &>>$LOGFILE
