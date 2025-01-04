@@ -62,3 +62,7 @@ VALIDATE $? "expense.conf configuration"
 systemctl restart nginx  &>>$LOGFILE
 
 VALIDATE $? "Restarting Nginx"
+
+systemctl status nginx &>>$LOGFILE
+
+VALIDATE $? "Nginx status"
