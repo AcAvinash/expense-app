@@ -99,8 +99,8 @@ dnf install mysql -y &>>$LOGFILE
 
 VALIDATE $? "Installing mysql..."
 
-mysql -h mysql.joindevops.fun -uroot -pExpenseApp@1 < /app/schema/backend.sql 
+mysql -h 172.31.28.194 -uroot -pExpenseApp@1 < /app/schema/backend.sql 
 
-mysql -h mysql.joindevops.fun -uroot -pExpenseApp@1
+mysql -h 172.31.28.194 -uroot -pExpenseApp@1
 
 systemctl restart backend &>>$LOGFILE
